@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justice for Oreos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#1A1A1A;--cream:#FAF5E4;--gold:#C9A84C;
+  --reeses:#C8521A;--reeses-light:#F4C49E;
+  --goldfish:#E8A020;--goldfish-light:#FDE8B8;
+  --milk:#FEFEFE;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--black);overflow-x:hidden}
+header{background:var(--black);color:var(--cream);padding:0}
+.stripe{height:6px;background:repeating-linear-gradient(90deg,var(--cream) 0 20px,var(--black) 20px 40px)}
+.hinner{max-width:900px;margin:0 auto;padding:56px 32px 46px;text-align:center}
+.spin{width:100px;height:100px;border-radius:50%;border:5px solid var(--cream);background:#2C2C2C;display:flex;align-items:center;justify-content:center;margin:0 auto 26px;position:relative;animation:spin 20s linear infinite;flex-shrink:0}
+.spin::before{content:'';position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(250,245,228,.3)}
+.spin-dot{width:32px;height:32px;border-radius:50%;background:var(--cream);opacity:.9}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eyebrow{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.35em;color:var(--gold);display:block;margin-bottom:10px}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,11vw,108px);line-height:.9;color:var(--cream);letter-spacing:.02em;margin-bottom:18px}
+h1 span{color:var(--gold);display:block}
+.hsub{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(15px,2.4vw,21px);color:rgba(250,245,228,.65);max-width:560px;margin:0 auto 30px;line-height:1.5}
+.pill{background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:.15em;font-weight:700;padding:6px 16px;border-radius:100px;text-transform:uppercase;display:inline-block}
+.stats-bar{background:var(--gold);color:var(--black);padding:14px 32px;display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;display:block}
+.stat-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+main{max-width:860px;margin:0 auto;padding:0 24px 80px}
+
+.incident{background:var(--black);border-radius:20px;padding:0;overflow:hidden}
+.inc-header{padding:18px 36px 15px;display:flex;align-items:center;gap:14px}
+.inc-header.oreo-hdr{background:var(--reeses)}
+.inc-header.fish-hdr{background:var(--goldfish)}
+.inc-badge{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.25em;color:#fff;background:rgba(0,0,0,.25);padding:4px 13px;border-radius:100px}
+.inc-title{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:.04em}
+.inc-body{padding:32px 36px 36px}
+.inc-body p{color:rgba(250,245,228,.8);font-size:16px;line-height:1.75;margin-bottom:12px}
+.inc-body p:last-child{margin-bottom:0}
+.inc-body strong{color:var(--cream)}
+
+.matchup{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:36px 0 0}
+.mc{background:var(--black);border-radius:16px;padding:22px 18px;text-align:center;border:2px solid transparent}
+.mc.loser-oreo{border-color:var(--gold);background:#1f1f1f}
+.mc.winner-oreo{border-color:var(--reeses);background:#1a0e07}
+.mc.loser-fish{border-color:var(--goldfish);background:#1f1a0e}
+.mc.winner-fish{border-color:#888;background:#181818}
+.mc-label{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:.28em;margin-bottom:7px;display:block}
+.lbl-oreo-l{color:var(--gold)}
+.lbl-oreo-w{color:var(--reeses-light)}
+.lbl-fish-l{color:var(--goldfish-light)}
+.lbl-fish-w{color:#aaa}
+.mc-name{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--cream);line-height:1;margin-bottom:8px}
+.mc-score{font-size:26px;font-weight:700;line-height:1}
+.score-oreo-l{color:var(--gold)}
+.score-oreo-w{color:var(--reeses-light)}
+.score-fish-l{color:var(--goldfish-light)}
+.score-fish-w{color:#aaa}
+.mc-verdict{font-size:11px;margin-top:8px;padding:3px 10px;border-radius:100px;display:inline-block;font-weight:700;letter-spacing:.08em}
+.verd-oreo-l{background:rgba(201,168,76,.15);color:var(--gold)}
+.verd-oreo-w{background:rgba(200,82,26,.2);color:var(--reeses-light)}
+.verd-fish-l{background:rgba(232,160,32,.15);color:var(--goldfish-light)}
+.verd-fish-w{background:rgba(150,150,150,.15);color:#aaa}
+.vs-bubble{background:#2a2a2a;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;color:#777;flex-shrink:0}
+
+.rebuttal{margin:28px 0 0;border-radius:14px;padding:24px 28px}
+.rebuttal.oreo-reb{background:#fff9ee;border:1.5px solid #e0c080}
+.rebuttal.fish-reb{background:#fffbf0;border:1.5px solid #e8c060}
+.reb-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.06em;margin-bottom:16px}
+.reb-title.oreo-t{color:#7a5a10}
+.reb-title.fish-t{color:#7a5a10}
+.reb-list{list-style:none;display:flex;flex-direction:column;gap:13px}
+.reb-list li{display:flex;gap:13px;align-items:flex-start;font-size:14px;line-height:1.6;color:#3a2010}
+.reb-list li strong{display:block;margin-bottom:1px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.reb-list li strong.oreo-s{color:#8a4a10}
+.reb-list li strong.fish-s{color:#8a5a00}
+.rnum{font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1;flex-shrink:0;width:26px}
+.rnum.oreo-n{color:#c9a84c}
+.rnum.fish-n{color:var(--goldfish)}
+
+.also-section{margin:40px 0 0}
+.also-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:20px;text-align:center}
+
+.manifesto{padding:60px 0 40px;text-align:center}
+.manifesto-lbl{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.35em;color:var(--gold);display:block;margin-bottom:18px}
+.manifesto h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,4.5vw,42px);line-height:1.2;max-width:620px;margin:0 auto 22px}
+.manifesto p{font-size:16px;line-height:1.8;max-width:560px;margin:0 auto 14px;color:#3d3d3d}
+
+.grievances{background:var(--black);color:var(--cream);border-radius:20px;padding:44px 36px;margin:0 0 52px}
+.g-title{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:24px}
+.g-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+.g-list li{display:flex;gap:18px;align-items:flex-start;font-size:15px;line-height:1.6;color:rgba(250,245,228,.8)}
+.g-list li strong{color:var(--cream);display:block;margin-bottom:2px}
+.gnum{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);line-height:1;flex-shrink:0;width:28px}
+
+.petition{background:var(--milk);border:2px solid var(--black);border-radius:20px;padding:44px 36px;margin-bottom:52px;position:relative}
+.petition::before{content:'OFFICIAL PETITION';position:absolute;top:-13px;left:36px;background:var(--gold);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:.2em;padding:3px 14px;border-radius:100px}
+.petition h3{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:6px}
+.petition .sub{color:#666;font-size:13px;margin-bottom:28px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555}
+.fg input,.fg select,.fg textarea{border:1.5px solid #d0cfc4;border-radius:10px;padding:11px 13px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--cream);color:var(--black);outline:none;width:100%;-webkit-appearance:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--black);background:#fff}
+.fg textarea{resize:vertical;min-height:76px}
+.ffull{grid-column:1/-1}
+.cboxes{margin:16px 0;display:flex;flex-direction:column;gap:10px}
+.crow{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#444;line-height:1.5;cursor:pointer}
+.crow input[type=checkbox]{width:16px;height:16px;border:1.5px solid #bbb;border-radius:4px;flex-shrink:0;cursor:pointer;margin-top:2px;accent-color:var(--black)}
+.sbtn{width:100%;background:var(--black);color:var(--cream);border:none;border-radius:12px;padding:16px 28px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.12em;cursor:pointer;margin-top:8px;transition:background .2s,transform .1s}
+.sbtn:hover{background:#333}
+.sbtn:active{transform:scale(.99)}
+.disc{font-size:11px;color:#999;text-align:center;margin-top:12px;line-height:1.6}
+.success{display:none;background:var(--black);color:var(--cream);border-radius:12px;padding:28px 20px;text-align:center;margin-top:20px}
+.success .big{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold);display:block;margin-bottom:6px}
+.success p{color:rgba(250,245,228,.75);font-size:14px;line-height:1.6}
+
+@media(max-width:560px){
+  .frow{grid-template-columns:1fr}
+  .matchup{grid-template-columns:1fr}
+  .vs-bubble{display:none}
+  .inc-body{padding:24px 20px}
+  .grievances{padding:32px 20px}
+  .petition{padding:36px 20px}
+  .rebuttal{padding:20px 20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="stripe"></div>
+  <div class="hinner">
+    <div class="spin"><div class="spin-dot"></div></div>
+    <span class="eyebrow">A Snacket Travesty — 2026</span>
+    <h1>Justice<span>for Oreos</span></h1>
+    <p class="hsub">A perfectly good cookie was knocked out of the bracket by a peanut butter cup. We have thoughts.</p>
+    <span class="pill">Snacket bracket protest movement</span>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-num" id="sig-count">47,832</span><span class="stat-lbl">Signatures</span></div>
+    <div class="stat-item"><span class="stat-num">2</span><span class="stat-lbl">Injustices</span></div>
+    <div class="stat-item"><span class="stat-num">0</span><span class="stat-lbl">Excuses accepted</span></div>
+  </div>
+</header>
+
+<main>
+  <div class="incident" style="margin-top:52px">
+    <div class="inc-header oreo-hdr">
+      <span class="inc-badge">INCIDENT #1</span>
+      <span class="inc-title">Reese's Cups defeat Oreos in the Snacket bracket</span>
+    </div>
+    <div class="inc-body">
+      <p>In the most puzzling outcome of the 2026 Snacket bracket, Reese's Peanut Butter Cups edged out the Oreo in a closer-than-it-should-have-been vote. The bracket advanced. The cookie did not. And a lot of people had questions.</p>
+      <p>To be clear: Reese's are good. Nobody is disputing that. But <strong>beating the Oreo?</strong> A cookie with over a century of history, a dedicated dunking tradition, and more flavor varieties than most candy aisles? That outcome deserves some scrutiny.</p>
+      <div class="matchup">
+        <div class="mc loser-oreo">
+          <span class="mc-label lbl-oreo-l">Eliminated</span>
+          <div class="mc-name">Oreo</div>
+          <div class="mc-score score-oreo-l">47%</div>
+          <span class="mc-verdict verd-oreo-l">Should have won</span>
+        </div>
+        <div class="vs-bubble">VS</div>
+        <div class="mc winner-oreo">
+          <span class="mc-label lbl-oreo-w">Advanced</span>
+          <div class="mc-name">Reese's</div>
+          <div class="mc-score score-oreo-w">53%</div>
+          <span class="mc-verdict verd-oreo-w">Somehow</span>
+        </div>
+      </div>
+      <div class="rebuttal oreo-reb">
+        <div class="reb-title oreo-t">Why the bracket got this one wrong</div>
+        <ul class="reb-list">
+          <li><span class="rnum oreo-n">1</span><div><strong class="oreo-s">Reese's is a candy, not a snack</strong>It's a Halloween staple, not a snack drawer staple. The category distinction matters and the bracket should have accounted for it.</div></li>
+          <li><span class="rnum oreo-n">2</span><div><strong class="oreo-s">Oreos have range. Reese's has one setting.</strong>Double Stuf. Golden. Mint. Birthday Cake. Thins. The Oreo roster is deep. Reese's is always peanut butter and chocolate, full stop.</div></li>
+          <li><span class="rnum oreo-n">3</span><div><strong class="oreo-s">Dunking was not factored in</strong>There is a multigenerational ritual around dunking an Oreo in milk. That cultural weight deserves recognition in any serious snack ranking.</div></li>
+          <li><span class="rnum oreo-n">4</span><div><strong class="oreo-s">Longevity should count for something</strong>Oreos have been around since 1912. At some point, that kind of track record earns a little respect in a bracket.</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="also-section">
+    <span class="also-label">Also: while we're here</span>
+    <div class="incident">
+      <div class="inc-header fish-hdr">
+        <span class="inc-badge">INCIDENT #2</span>
+        <span class="inc-title">Smartfood popcorn defeats Goldfish. Yes, really.</span>
+      </div>
+      <div class="inc-body">
+        <p>The Oreo wasn't the only beloved snack shown the door in 2026. Goldfish crackers — a snack so universally loved it's practically a food group — were knocked out by Smartfood White Cheddar Popcorn. Smartfood is fine. Smartfood is a Tuesday afternoon snack. <strong>Goldfish are an institution.</strong></p>
+        <p>They come in a bag shaped like a fish. They've been in every kid's lunchbox since 1962. They're cheddar but somehow not too cheddar. The "made with real cheese!" tagline is genuinely reassuring. How does a snack this solid lose to a bag of popcorn you forget you're eating?</p>
+        <div class="matchup">
+          <div class="mc loser-fish">
+            <span class="mc-label lbl-fish-l">Eliminated</span>
+            <div class="mc-name">Goldfish</div>
+            <div class="mc-score score-fish-l">45%</div>
+            <span class="mc-verdict verd-fish-l">Deserved better</span>
+          </div>
+          <div class="vs-bubble">VS</div>
+          <div class="mc winner-fish">
+            <span class="mc-label lbl-fish-w">Advanced</span>
+            <div class="mc-name">Smartfood</div>
+            <div class="mc-score score-fish-w">55%</div>
+            <span class="mc-verdict verd-fish-w">Sure, okay</span>
+          </div>
+        </div>
+        <div class="rebuttal fish-reb">
+          <div class="reb-title fish-t">In defense of Goldfish</div>
+          <ul class="reb-list">
+            <li><span class="rnum fish-n">1</span><div><strong class="fish-s">The shape is part of the experience</strong>Each cracker is a tiny fish. That's not a gimmick — it's a design classic. Smartfood is just irregularly shaped puffs.</div></li>
+            <li><span class="rnum fish-n">2</span><div><strong class="fish-s">Snackability is off the charts</strong>Goldfish are perfectly portioned for mindless consumption. You can eat them one at a time or by the fistful. The versatility is unmatched.</div></li>
+            <li><span class="rnum fish-n">3</span><div><strong class="fish-s">Cross-generational appeal</strong>Toddlers love them. College students love them. Adults keep a bag at their desk. Smartfood has a demographic. Goldfish have everyone.</div></li>
+            <li><span class="rnum fish-n">4</span><div><strong class="fish-s">"The snack that smiles back" — and they mean it</strong>That tagline isn't marketing fluff. Every single cracker has a little smile stamped on it. Goldfish bring joy at the product level. Smartfood does not smile. Smartfood has never smiled.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="manifesto">
+    <span class="manifesto-lbl">Our position</span>
+    <h2>Two great snacks. Both eliminated too early. The bracket owes us answers.</h2>
+    <p>We have nothing against Reese's or Smartfood. They are perfectly fine treats. But "perfectly fine" and "better than an Oreo" or "better than Goldfish" are two very different things, and this bracket confused them — twice.</p>
+    <p>We're asking for one simple acknowledgment: that the 2026 Snacket bracket made some questionable calls, and the snacking public deserves better seeding methodology going forward.</p>
+  </div>
+
+  <div class="grievances">
+    <span class="g-title">The formal grievances</span>
+    <ul class="g-list">
+      <li><span class="gnum">I</span><div><strong>Dunkability was not part of the scoring criteria</strong>A major oversight. Any snack bracket that doesn't weight dunkability is working with an incomplete rubric.</div></li>
+      <li><span class="gnum">II</span><div><strong>The Double Stuf wasn't given its own seed</strong>It is arguably a different and superior product. Lumping it in with the classic Oreo may have diluted the vote.</div></li>
+      <li><span class="gnum">III</span><div><strong>Cultural legacy was underweighted across the board</strong>Oreos since 1912. Goldfish since 1962. Combined, that's over 200 years of snack history dismissed in two matchups.</div></li>
+      <li><span class="gnum">IV</span><div><strong>No rematch clause exists</strong>A truly fair bracket would have a mechanism for contesting obviously surprising results. We are proposing one now.</div></li>
+    </ul>
+  </div>
+
+  <div class="petition">
+    <h3>Sign the petition</h3>
+    <p class="sub">Add your name to the official record of people who think the Oreo and Goldfish deserved better.</p>
+    <div class="frow">
+      <div class="fg"><label>First name</label><input type="text" placeholder="Your name"></div>
+      <div class="fg"><label>Last name</label><input type="text" placeholder="Your surname"></div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+      <div class="fg"><label>Snack allegiance</label>
+        <select>
+          <option>Oreo (original)</option>
+          <option>Oreo Double Stuf</option>
+          <option>Oreo Golden</option>
+          <option>Goldfish (cheddar)</option>
+          <option>Goldfish (pretzel)</option>
+          <option>Both — I stand with all the wronged snacks</option>
+        </select>
+      </div>
+    </div>
+    <div class="frow">
+      <div class="fg ffull"><label>Personal statement (optional)</label><textarea placeholder="Tell us what these snacks mean to you..."></textarea></div>
+    </div>
+    <div class="cboxes">
+      <label class="crow"><input type="checkbox" checked> I believe the Oreo was eliminated too early in the 2026 Snacket bracket</label>
+      <label class="crow"><input type="checkbox" checked> I also believe Goldfish vs. Smartfood did not go the right way</label>
+      <label class="crow"><input type="checkbox"> I would like to be notified if a rematch bracket is ever organized</label>
+    </div>
+    <button class="sbtn" onclick="handleSubmit()">Sign the petition — support the wronged snacks</button>
+    <p class="disc">This petition is satirical and entirely for fun. No Oreos or Goldfish were harmed in its creation, though several of each were consumed during development.</p>
+    <div class="success" id="success">
+      <span class="big">Signature recorded.</span>
+      <p>You are now part of the official record of people with correct opinions. Together, we will ensure this never happens again. A rematch is coming.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+let sigs = 47832;
+function handleSubmit() {
+  sigs++;
+  document.getElementById('sig-count').textContent = sigs.toLocaleString();
+  document.getElementById('success').style.display = 'block';
+  document.querySelector('.sbtn').style.display = 'none';
+}
+setInterval(() => {
+  sigs += Math.floor(Math.random() * 3);
+  document.getElementById('sig-count').textContent = sigs.toLocaleString();
+}, 4000);
+</script>
+
+</body>
+</html>
